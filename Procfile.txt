@@ -1,0 +1,2 @@
+#web: gunicorn First_file_to_load:flask_method_name
+web: gunicorn app:app
