@@ -20,7 +20,7 @@ scaler = pickle.load(open('scaler.pkl', 'rb'))
 le = pickle.load(open('le.pkl', 'rb'))
 
 
-# In[3]:
+# In[4]:
 
 
 @app.route('/')
@@ -44,6 +44,12 @@ def predict():
     
     print('min_qualicication :: ',min_qualicication, '\nrole_cleaned :: ',role_cleaned,
           '\navg_experience_yrs :: ',avg_experience_yrs, '\ncurrent_salary', current_salary)
+    
+    if min_qualicication == 'Select Qualification' or role_cleaned == 'Select Role' :
+        
+        return render_template('index.html', prediction_text=f'Please select values from drop-down',
+                               role = role_cleaned, qualification = min_qualicication,
+                               exp = int_features[2], sal = current_salary)
     
     min_qualicication = le.transform([min_qualicication])
     role_cleaned = le.transform([role_cleaned])
@@ -76,27 +82,9 @@ def predict():
                           qualification = int_features[0])
 
 
-# In[ ]:
+# In[5]:
 
 
 if __name__ == '__main__':
     app.run(debug=False)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+    
