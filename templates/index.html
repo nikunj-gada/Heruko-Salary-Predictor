@@ -1,35 +1,25 @@
 <html >
-    <!--From https://codepen.io/frytyler/pen/EGdtg-->
-    <head>
-        <meta charset="UTF-8">
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
         <title>Salary Predictor</title>
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <!--<link rel="stylesheet" href="E:\\StudyMaterial\\Imarticus\\Naukri\\final\\Data-Modelling\\templates\\static\\css\\style.css">-->
-    </head>
-    <html>
-        <!--From https://codepen.io/frytyler/pen/EGdtg-->
-        <head>
-            <meta charset="UTF-8">
-            <title>ML API</title>
-            <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-            <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-            <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-            <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-            <!--<link rel="stylesheet" href="E:\\StudyMaterial\\Imarticus\\Naukri\\final\\Data-Modelling\\templates\\static\\css\\style.css">-->
-        </head>
+        <!-- <link rel="stylesheet" href="style.css">   -->
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+		<!-- <link rel="stylesheet" href="E:\\StudyMaterial\\Imarticus\\Naukri\\final\\Data-Modelling\\static\\css\\style.css"> -->
+</head>
         <body>
             <div class="login">
                 <h1>Salary Analysis</h1>
                 <!-- Main Input For Receiving Query to our ML -->
                 <form action="{{ url_for('predict')}}" method="post">
-                    <label for="qualification">Choose a Qualification :</label>
-                    <br></br>
+                    <!-- <label for="qualification">Choose a Qualification :</label> -->
+                   
                     <select name="qualification" id="qualification">
+					<option value="" selected disabled hidden>{{ qualification }}</option>
                         <option value="Any Graduate">Any Graduate</option>
                         <option value="Btech/Be">B.Tech/B.E</option>
                         <option value="Mba/Pgdm">MBA/PGDM</option>
@@ -42,9 +32,9 @@
                         <option value="Llb">L.L.B</option>
                     </select>
                     <br></br>
-                    <label for="roles">Choose a Role:</label>
-                    <br></br>
+                    							
                     <select name="roles" id="roles">
+						<option value="" selected disabled hidden>{{ role }}</option>
                         <option value=".Net  Architect / Developer">.Net  Architect / Developer</option>
                         <option value="Account Marketing / Executive">Account Marketing / Executive</option>
                         <option value="Any / Support / Monitoring / Maintenance Engineer">Any / Support / Monitoring / Maintenance Engineer</option>
@@ -69,14 +59,14 @@
                         <option value="Receptionist">Receptionist</option>
                         <option value="Sap Developer / Architect/ Consultant">Sap Developer / Architect/ Consultant</option>
                         <option value="Server Administrator">Server Administrator</option>
-                        <option value="Software Developer">Software Developer</option>
+                        <option value="Software Developer" >Software Developer</option>
                         <option value="Solution Architect / Cloud Architect / Cloud Computing / Cloud Engineer / Technical Lead / Infrastructure Architect">Solution Architect / Cloud Architect / Cloud Computing / Cloud Engineer / Technical Lead / Infrastructure Architect</option>
                         <option value="Technical Writer">Technical Writer</option>
                         <option value="Ui Developer / Architect / Manager / Consultant / Advisor">Ui Developer / Architect / Manager / Consultant / Advisor</option>
                     </select>
                     <br></br>
-                    <input type="text" name="experience" placeholder="Experience (yrs)" required="required" value="{{ exp }}"/>
-                    <input type="text" name="current_salary" placeholder="Current Salary (in-Lac) {optional}" value="{{ sal }}"/>
+                    <input type="number" step="0.1"  name="experience" placeholder="Experience (yrs)" required="required" value="{{ exp }}"/>
+                    <input type="number" step="0.1" name="current_salary" placeholder="Current Salary (in-Lac)" value="{{ sal }}"/>
                     <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
                 </form>
                 <br>{{ prediction_text }}

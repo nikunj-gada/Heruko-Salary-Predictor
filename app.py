@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 import pandas as pd
 
 
-# In[ ]:
+# In[2]:
 
 
 app = Flask(__name__)
@@ -20,12 +20,13 @@ scaler = pickle.load(open('scaler.pkl', 'rb'))
 le = pickle.load(open('le.pkl', 'rb'))
 
 
-# In[ ]:
+# In[3]:
 
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    r = render_template('index.html', role = 'Select Role', qualification = 'Select Qualification')
+    return r
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -58,15 +59,19 @@ def predict():
     if len(current_salary) > 0 :
         #Your current salary is 37.5% less than the market rate 
         c = float(output) - float(current_salary)
+        print('c : ',c)
         if c < 0:
             c = round(abs(c)*100/float(output),2 ) 
+            print('c ',c)
             text = f'\nYour current salary is {c}% more than the market rate'
         elif c > 0:
             c = round(abs(c)*100/float(output),2 )
+            print('c ',c)
             text = f'\nYour current salary is {c}% less than the market rate'
 
     return render_template('index.html', prediction_text=f'Employee Salary should be ₹ {output} Lacs',
-                          prediction_text2 = text)
+                          prediction_text2 = text, exp = int_features[2], sal = int_features[3], role = int_features[1],
+                          qualification = int_features[0])
 
 
 # In[ ]:
