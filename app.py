@@ -61,7 +61,7 @@ def predict():
         if c < 0:
             c = round(abs(c)*100/float(output),2 ) 
             text = f'\nYour current salary is {c}% more than the market rate'
-        if c > 0:
+        elif c > 0:
             c = round(abs(c)*100/float(output),2 )
             text = f'\nYour current salary is {c}% less than the market rate'
 
