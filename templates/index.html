@@ -7,9 +7,8 @@
         <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-        <!-- <link rel="stylesheet" href="style.css">   -->
-		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
-		<!-- <link rel="stylesheet" href="E:\\StudyMaterial\\Imarticus\\Naukri\\final\\Data-Modelling\\static\\css\\style.css"> -->
+		<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> -->
+		<link rel="stylesheet" href="E:\\StudyMaterial\\Imarticus\\Naukri\\final\\Data-Modelling\\static\\styles\\mainpage.css">
 </head>
         <body>
             <div class="login">
@@ -67,7 +66,7 @@
                     <br></br>
                     <input type="number" step="0.1"  name="experience" placeholder="{{ exp }}" required="required" value="{{ exp }}"/>
                     <br></br>
-					<input type="number" step="0.1" name="current_salary" placeholder="{{ sal }}" value="{{ sal }}"/>
+					<input type="number" step="0.01" name="current_salary" placeholder="{{ sal }}" value="{{ sal }}"/>
                     <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
                 </form>
                 <br>{{ prediction_text }}
