@@ -19,7 +19,7 @@
                     <!-- <label for="qualification">Choose a Qualification :</label> -->
                    
                     <select name="qualification" id="qualification">
-					<option value="" selected disabled hidden>{{ qualification }}</option>
+					<option value="{{ qualification }}" selected >{{ qualification }}</option>
                         <option value="Any Graduate">Any Graduate</option>
                         <option value="Btech/Be">B.Tech/B.E</option>
                         <option value="Mba/Pgdm">MBA/PGDM</option>
@@ -34,7 +34,7 @@
                     <br></br>
                     							
                     <select name="roles" id="roles">
-						<option value="" selected disabled hidden>{{ role }}</option>
+						<option value="{{ role }}" selected >{{ role }}</option>
                         <option value=".Net  Architect / Developer">.Net  Architect / Developer</option>
                         <option value="Account Marketing / Executive">Account Marketing / Executive</option>
                         <option value="Any / Support / Monitoring / Maintenance Engineer">Any / Support / Monitoring / Maintenance Engineer</option>
@@ -65,9 +65,9 @@
                         <option value="Ui Developer / Architect / Manager / Consultant / Advisor">Ui Developer / Architect / Manager / Consultant / Advisor</option>
                     </select>
                     <br></br>
-                    <input type="number" step="0.1"  name="experience" placeholder="Experience (yrs)" required="required" value="{{ exp }}"/>
+                    <input type="number" step="0.1"  name="experience" placeholder="{{ exp }}" required="required" value="{{ exp }}"/>
                     <br></br>
-					<input type="number" step="0.1" name="current_salary" placeholder="Current Salary (in-Lac)" value="{{ sal }}"/>
+					<input type="number" step="0.1" name="current_salary" placeholder="{{ sal }}" value="{{ sal }}"/>
                     <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
                 </form>
                 <br>{{ prediction_text }}

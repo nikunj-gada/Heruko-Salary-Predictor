@@ -25,7 +25,8 @@ le = pickle.load(open('le.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    r = render_template('index.html', role = 'Select Role', qualification = 'Select Qualification')
+    r = render_template('index.html', role = 'Select Role', sal = "Current Salary (in-Lacs)",
+                        qualification = 'Select Qualification', exp = "Experience (in-Yrs)")
     return r
 
 @app.route('/predict',methods=['POST'])
@@ -34,6 +35,7 @@ def predict():
     For rendering results on HTML GUI
     '''
     int_features = [x for x in request.form.values()]
+    print('int_features : ',int_features)
     
     min_qualicication = int_features[0]
     role_cleaned = int_features[1]
@@ -70,7 +72,7 @@ def predict():
             text = f'\nYour current salary is {c}% less than the market rate'
 
     return render_template('index.html', prediction_text=f'Employee Salary should be ₹ {output} Lacs',
-                          prediction_text2 = text, exp = int_features[2], sal = int_features[3], role = int_features[1],
+                          prediction_text2 = text, exp = int_features[2], sal = current_salary, role = int_features[1],
                           qualification = int_features[0])
 
 
