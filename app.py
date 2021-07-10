@@ -25,7 +25,7 @@ le = pickle.load(open('le.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    r = render_template('index.html', role = 'Select Role', sal = "Current Salary (in-Lacs)",
+    r = render_template('index.html', role = 'Select Role', sal = "Current Salary (in-Lacs) {Optional_Field}",
                         qualification = 'Select Qualification', exp = "Experience (in-Yrs)")
     return r
 
