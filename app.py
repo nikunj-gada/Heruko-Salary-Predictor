@@ -76,6 +76,9 @@ def predict():
             c = round(abs(c)*100/float(output),2 )
             print('c ',c)
             text = f'\nYour current salary is {c}% less than the market rate'
+            
+        if len(current_salary) == 0:
+            current_salary = "Current Salary (in-Lacs) {Optional_Field}"
 
     return render_template('index.html', prediction_text=f'Employee Salary should be ₹ {output} Lacs',
                           prediction_text2 = text, exp = int_features[2], sal = current_salary, role = int_features[1],
